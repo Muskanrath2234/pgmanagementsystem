@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Admin-login{% endblock title %}
+{% block content %}
+<style>
+
+/* Container for the login form */
+.login-container {
+    width: 350px;
+    margin: 0 auto;
+    padding: 40px;
+    padding-bottom: 30px; /* Reduced bottom padding */
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
+}
+
+/* Heading style */
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+    font-size: 24px;
+}
+
+/* Label style */
+.login-container label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* Input style */
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+/* Input focus style */
+.login-container input[type="text"]:focus,
+.login-container input[type="password"]:focus {
+    border-color: #007bff;
+}
+
+/* Button style */
+.login-container button[type="submit"] {
+    width: 100%;
+    padding: 14px;
+    background-color: #f76b8a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+/* Button hover style */
+.login-container button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Error message style */
+.error-message {
+    color: #f33;
+    text-align: center;
+    margin-top: 10px;
+}
+
+    </style>
+
+
+    {% if error_message %}
+        <p class="error-message">{{ error_message }}</p>
+    {% endif %}
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <label for="adminname">Username:</label>
+            <input type="text" name="adminname" id="adminname" placeholder="Username"><br>
+            <label for="adminpassword">Password:</label>
+            <input type="password" name="adminpassword" id="adminpassword" placeholder="Password"><br>
+            <button type="submit">Log in</button><br>
+
+        </form>
+    </div>
+{% endblock %}

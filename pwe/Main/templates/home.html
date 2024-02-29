@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% load static %}
+
+{% block content %}
+<style>
+  .jumbotron {
+    margin-top: 10px;
+    width: 80%;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
+
+    color: #333333; /* Text color */
+  }
+
+  .brand-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333; /* Text color */
+    margin-bottom: 10px;
+  }
+
+  .brand-name i {
+    font-style: italic;
+  }
+
+  .slogan {
+    font-size: 18px;
+    color: #666666; /* Text color */
+    margin-bottom: 20px;
+  }
+
+  .services {
+    flex:1;
+    font-size: 16px;
+    color: #333333; /* Text color */
+  }
+
+  .services ul {
+    padding: 0;
+
+  }
+
+  .services li {
+    margin-bottom: 5px;
+
+  }
+
+
+        .image-container img {
+            width: 100%; /* Make the image width 100% of its container */
+            height: 80%; /* Maintain aspect ratio */
+            display: block; /* Make sure the image behaves as a block element */
+        }
+
+
+</style>
+<div class="image-container">
+    <!-- Your image goes here -->
+    <img src="static/image/h1.jpg" alt="pg image">
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h3 class="brand-name"><b><i>PWE Paying Guest</i></b></h3>
+    <p class="slogan">"Where Every Journey Finds a Home"</p>
+
+    <div class="services">
+      <h2>Our Services:</h2>
+      <ul>
+        <li>Room cleaning</li>
+        <li>Gas for cooking</li>
+        <li>Purified water</li>
+        <li>Refrigerator</li>
+        <li>Wi-Fi</li>
+        <li>Washing machine</li>
+        <li>Washroom cleaning</li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

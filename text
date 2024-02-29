@@ -1,0 +1,17 @@
+def user_register(request):
+    if request.method == 'POST':
+        username = request.POST.get('name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
+
+        # Password match ka check karna
+        if password != confirm_password:
+            messages.error(request, 'Passwords do not match')
+            return redirect('userregister')
+
+        user = User.objects.create_user(username=username, email=email, password=password)
+        messages.info(request, 'Your account has been created successfully')
+        return redirect('user_login')
+
+    return render(request, 'userregister.html')

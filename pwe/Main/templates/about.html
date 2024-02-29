@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About{% endblock title %}
+
+{% block content %}
+<div class="about">
+<h2 class="mt-10  text-dark">About Us</h2>
+<p class="text-dark">Welcome to our blog! We are passionate about sharing our thoughts and experiences with you.</p>
+<p>We believe in the power of storytelling and aim to inspire and educate through our blog posts.</p>
+<p>Our team consists of dedicated writers who are committed to providing you with engaging and informative content.</p>
+<p>Feel free to explore our blog and join us on our journey!</p>
+
+<pre>
+<!-- If you want to include preformatted text -->
+</pre>
+
+<h3>MEET OUR TEAM</h3>
+
+<p>MR.JONE</p>
+<p>MR.NIMA</p>
+<p>MR.DEO</p>
+    </div>
+
+<style>
+    .about{
+    margin-left: 40px;
+
+
+    }
+
+
+    .text-dark {
+        color: #333; /* Set text color to dark */
+    }
+
+    h2, h3 {
+        font-weight: bold; /* Make headings bold */
+        margin-top: 50px; /* Add margin top for headings */
+    }
+
+    p {
+        margin-bottom: 10px; /* Add margin bottom for paragraphs */
+    }
+
+    pre {
+        /* Styles for preformatted text */
+    }
+</style>
+
+{% endblock content %}

@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block title %}Login-Page{% endblock %}
+{% load static %}
+
+{% block content %}
+    <div class="login-container">
+        <h2>Login</h2>
+
+       <form action="" method="POST">
+                {% csrf_token %}
+                  <ul>
+                  <li class="name">
+                      <label for="username">Username</label>
+                      <input type="text" name="username" id="username" class="username-input" placeholder="Username">
+                  </li>
+
+                  <li class="pass">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" class="pass-input" placeholder="Password">
+                  </li>
+
+                    <button class="signup-button"> Log in </button><br>
+
+                    <a style="color:#f76b8a" class="login-link" href="{% url 'adminlogin'%}">LOGIN AS ADMIN</a>
+                  </ul>
+              </form>
+    </div>
+
+    <style>
+
+
+
+        /* Internal CSS styles */
+        .login-container {
+            margin: 50px auto;
+            width: 380px;
+            padding: 15px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        h2 {
+
+                  font-weight: bold;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 15px;
+        }
+
+        label {
+
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button.signup-button {
+            width: 20%;
+            padding: 10px;
+            background-color:#f76b8a;
+            font-weight: bold;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        a.login-link {
+            text-decoration: none;
+            color: #007bff;
+            margin-top: 10px;
+            display: block;
+        }
+    </style>
+{% endblock %}
