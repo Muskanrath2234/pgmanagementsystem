@@ -134,3 +134,13 @@ LOGIN_URL ='login'
 
 
 ADMIN_REDIRECT_URL = '/admin/'
+
+
+
+ALLOWED_HOSTS = [ '*']
+CSRF_TRUSTED_ORIGINS = ['https://ad1e-2401-4900-1c18-a8b-ad5a-4aae-8fc6-fc7e.ngrok-free.app']
+SESSION_COOKIE_DOMAIN = None
+CSRF_COOKIE_SECURE = True
+CSRF_TRUSTED_ORIGINS = ['https://*.ngrok-free.app']
+
+

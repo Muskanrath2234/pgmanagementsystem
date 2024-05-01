@@ -5,6 +5,8 @@ from django.views.generic import  DetailView, UpdateView, DeleteView,ListView
 from .forms import *
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
+
 
 
 class PostListView(ListView):
@@ -12,6 +14,7 @@ class PostListView(ListView):
     template_name = 'post.html'
     context_object_name = 'posts'
     ordering = ['-date_posted']
+
 
 class PostDetailView(DetailView):
     model = Post
@@ -136,4 +139,24 @@ def user_logout(request):
     logout(request)
     return redirect('user_login')
 
+from django.shortcuts import render
+from django.contrib.auth.models import User
 
+def author_profile(request, username):
+    # Get the user object based on username
+    user = User.objects.get(username=username)
+    # Get all posts by this user
+    posts = user.post_set.all()
+    # Render the author profile template with user and posts
+    return render(request, 'author_profile.html', {'user': user, 'posts': posts})
+
+
+def posts_by_date(request, year, month, day):
+    # Convert year, month, day to datetime object
+    date_obj = datetime(year, month, day)
+
+    # Filter posts for the given date
+    posts = Post.objects.filter(date_posted__year=year, date_posted__month=month, date_posted__day=day)
+
+    # Render template with posts and date
+    return render(request, 'datewisepost.html', {'date': date_obj, 'posts': posts})

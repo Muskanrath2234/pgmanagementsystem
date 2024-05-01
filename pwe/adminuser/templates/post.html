@@ -1,75 +1,71 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
 <style>
-
-.post {
-    margin-bottom: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
+    /* CSS for the article image */
+.article-image {
+    max-width: 100%; /* Set maximum width to prevent image overflow */
+    height: auto; /* Automatically adjust height to maintain aspect ratio */
+    width: 300px; /* Set the desired width */
+    margin-top: 10px; /* Add margin to separate image from text */
 }
 
-.post h2, .post h4 {
-        font-size: 20px;
+    /* Common CSS for all posts */
+    .post {
+        margin-bottom: 20px; /* Add bottom margin */
+        margin-top: 5px; /* Add bottom margin */
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #f8f9fa;
+        width: 60%;
+        margin: auto;
     }
 
-    .post h5 {
-        font-size: 16px;
+    .article-metadata {
+        margin-bottom: 5px;
     }
 
-.post img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 10px;
-    border-radius: 5px;
-}
-
-
-
-.container {
-    width: 50%;
-    margin: 0 auto;
-}
-
-.postimage {
-    margin-bottom:16px;
-    width: 10px;
-    height: 125px;
-}
-.article-image fixed-size-image{
-   margin-bottom:16px;
-    width: 10%;
-    height: 125px;
+    .article-title {
+        text-decoration: none;
+        color: black;
     }
 
+    .article-title:hover {
+        text-decoration: underline;
+    }
 
+    /* Style for full-size image */
+    .full-size-image {
+        width: 100%; /* Adjust as needed */
+        height: auto;
+        margin-top: 10px;
+    }
 </style>
 
-  <div class="container">
+<div class="container">
     {% for post in posts %}
-    <div class="post">
+    <!-- All posts have the same class "post" -->
+    <div  class="post"  style="margin-bottom: 40px;">
         <article class="media content-section">
-          <img class="rounded-circle article-img" src="{% if post.author.profile.image %}{{ post.author.profile.image.url }}{% endif %}">
-          <div class="media-body">
-            <div class="article-metadata">
-                <h4 class="mr-2" >{{ post.author }}</h4>
-                <h5 class="text-muted">{{ post.date_posted|date:"F d, Y" }}</h5><hr>
-                 <h2 ><a style="color:black " class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-
-
+            <img class="rounded-circle article-img" src="{% if post.author.profile.image %}{{ post.author.profile.image.url }}{% endif %}">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <!-- Wrap author's name with anchor tag -->
+                    <h4 class="mr-2"><a href="{% url 'author-profile' post.author.username %}">{{ post.author }}</a></h4>
+                    <!-- Date link -->
+                    <h5 class="text-muted"><a href="{% url 'posts-by-date' post.date_posted|date:'Y' post.date_posted|date:'m' post.date_posted|date:'d' %}">{{ post.date_posted|date:"F d, Y" }}</a></h5><hr>
+                    <h2><a style="color:black " class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+                </div>
+                {% if post.image %}
+                <!-- Wrap image with anchor tag linking to full-size image -->
+                <a href="{{ post.image.url }}" target="_blank">
+                    <img class="article-image fixed-size-image full-size-image" src="{{ post.image.url }}" alt="{{ post.title }}">
+                </a>
+                {% endif %}
             </div>
-
-
-              {% if post.image %}
-               <img class="article-image fixed-size-image" src="{{ post.image.url }}" alt="{{ post.title }}">
-              {% endif %}
-          </div>
         </article>
     </div>
     {% endfor %}
-  </div>
+</div>
 
-
-{% endblock  %}
+{% endblock %}
