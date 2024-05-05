@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}contact{% endblock %}
+{% load static %}
+
+{% block content %}
+    <h3 class="text-center mt-5 mb-4">My Leave Requests</h3>
+    <div class="container">
+        {% if leave_requests %}
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <ul class="list-unstyled">
+                        {% for leave_request in leave_requests %}
+                            <li class="bg-light p-3 mb-3 rounded">
+                                <p>User: {{ leave_request.user.username }}</p>
+                                <p>Contact Number: {{ leave_request.contact_number }}</p>
+                                <p>Reason: {{ leave_request.reason }}</p>
+                                <p>Room Number: {{ leave_request.room_number }}</p>
+                                <p>Bed Number: {{ leave_request.bed_number }}</p>
+                                <p>Start Date: {{ leave_request.start_date }}</p>
+                                <p>End Date: {{ leave_request.end_date }}</p>
+                                <p>Status: {{ leave_request.get_status_display }}</p>
+                                <p>Due: {{ leave_request.get_due_display }}</p>
+                                <div class="d-flex justify-content-start">
+                                    <form action="{% url 'delete_leave_request' leave_request.id %}" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger mr-2">Delete</button>
+                                    </form>
+                                    <a href="{% url 'update_leave_request' leave_request.id %}" class="btn btn-primary">Update</a>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% else %}
+            <p class="text-center">No leave requests found.</p>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -11,7 +11,7 @@
     border-radius: 10px;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4);
 
-    color: #333333; /* Text color */
+    color: #333333;
   }
 
   .brand-name {
@@ -46,6 +46,10 @@
     margin-bottom: 5px;
 
   }
+  .styleword{
+    font-family: "Dancing Script", cursive;
+  }
+
 
 
         .image-container img {
@@ -53,13 +57,32 @@
             height: 80%; /* Maintain aspect ratio */
             display: block; /* Make sure the image behaves as a block element */
         }
+  .faq-item {
+     background-color: #f7e8f0;
+}
+   .btn-custom {
+            background-color: #AA336A;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #8C2255;
+        }
+
+
 
 
 </style>
-<div class="image-container">
-    <!-- Your image goes here -->
-    <img src="static/image/h1.jpg" alt="pg image">
+
+<div class="img">
+      <img src="static/image/h1.jpg" class="d-block w-100" alt="...">
 </div>
+
 
 <div class="jumbotron">
   <div class="container">
@@ -80,4 +103,176 @@
     </div>
   </div>
 </div>
+<section class="faq mb-5 mt-5">
+  <div class="faq-item">
+    <div class="container">
+    <div class="text-center my-5"><h1 class="styleword">Frequently-Asked<span class="text-primary"> -questions</span></h1>
+      <hr class="w-25 m-auto">
+    </div>
+    <div class="accordion " id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        What are the opening and closing hours of the PG?
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        The PG operates from 6:00 AM to 10:30 PM.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Are guests or friends allowed to visit?
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        No, visitors are not allowed in the PG premises for security reasons.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Until when should the rent be paid for the PG?
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Rent is due from the start of the month until the 5th of the month.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        Do you have a helpline number for future inquiries?
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Yes, you can contact us at the following numbers:
+        <ul>
+          <li>Sally - +91 98765 43210</li>
+          <li>Emily - +91 87654 32109</li>
+          <li>Jessica - +91 76543 21098</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+        What documents are required for taking admission in the PG?
+      </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        To take admission in our PG, you will need to provide a copy of your:
+        <ul>
+          <li>Aadhar card</li>
+          <li>Passport-size photographs</li>
+          <li>College or workplace ID</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSix">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+        Can we pay the fee online?
+      </button>
+    </h2>
+    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Yes, we offer online payment options for your convenience. You can pay your fees securely through our website portal.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingSeven">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+        How far is GK PG from the railway station?
+      </button>
+    </h2>
+    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        GK PG is approximately [insert distance] from the nearest railway station. We are easily reachable by taxi or public transport.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingEight">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+        What is the PG fee structure?
+      </button>
+    </h2>
+    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Our PG fee structure varies based on room type and amenities. Please contact us directly or visit our website for detailed information on our fee structure.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingNine">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+        Do you provide any additional facilities or amenities apart from accommodation?
+      </button>
+    </h2>
+    <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Yes, we offer various facilities such as:
+        <ul>
+          <li>24/7 security</li>
+          <li>Housekeeping services</li>
+          <li>Laundry facilities</li>
+          <li>Wi-Fi connectivity</li>
+          <li>Common areas for recreation or study</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTen">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+        Are meals provided in the PG?
+      </button>
+    </h2>
+    <div id="collapseTen" class="accordion-collapse collapse" aria-labelledby="headingTen" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        No, we do not provide meals in the PG. Residents are responsible for their own meals.
+      </div>
+    </div>
+  </div>
+</div>
+{% block search_form %}
+    <section class="search_room_form">
+        <h3 class="mt-5 pb-3 text-center">Check Room Availability</h3>
+        <form method="get" action="{% url 'search_rooms' %}">
+            <div class="row g-3">
+                <div class="col">
+                    <input type="date" class="form-control" name="start_date" placeholder="Start Date" aria-label="Start Date">
+                </div>
+                <div class="col">
+                    <select class="form-control" name="room_type">
+                        <option value="single">Single</option>
+                        <option value="double">Double</option>
+                        <option value="triple">Triple</option>
+                    </select>
+                </div>
+               <div class="col">
+               <button type="submit" class="btn-custom">Search</button>
+           </div>
+
+            </div>
+        </form>
+    </section>
+{% endblock %}
+
+
+  </div>
+</section>
 {% endblock %}

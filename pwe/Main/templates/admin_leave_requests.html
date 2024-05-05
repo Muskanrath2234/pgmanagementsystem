@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}contact{% endblock %}
+{% load static %}
+
+{% block content %}
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Leave Requests</h1>
+    {% if leave_requests %}
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Contact Number</th>
+                <th>Reason</th>
+                <th>Room Number</th>
+                <th>Bed Number</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Status</th>
+                <th>Due</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for leave_request in leave_requests %}
+            <tr>
+                <td>{{ leave_request.user }}</td>
+                <td>{{ leave_request.contact_number }}</td>
+                <td>{{ leave_request.reason }}</td>
+                <td>{{ leave_request.room_number }}</td>
+                <td>{{ leave_request.bed_number }}</td>
+                <td>{{ leave_request.start_date }}</td>
+                <td>{{ leave_request.end_date }}</td>
+                <td>{{ leave_request.status }}</td>
+                <td>{{ leave_request.due }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No leave requests found.</p>
+    {% endif %}
+{% endblock %}

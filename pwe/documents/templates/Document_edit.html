@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Profile
+{% endblock %}
+{% block style %}
+<style>
+    .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.user-content-container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-content-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.user-content-container li {
+    margin-bottom: 15px;
+}
+
+.user-content-container label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.user-content-container input[type="text"],
+.user-content-container input[type="date"] {
+    width: calc(100% - 10px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.user-content-container button {
+    padding: 10px 20px;
+    background-color: #61c0bf;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.user-content-container button:hover {
+    background-color: #61c0bf;
+}
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+<form class="container" action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="user-content-container user-profile-form-container">
+        <ul>
+            <li class="name">
+                <label for="user-name">Your Name</label>
+                <input type="text" name="name" id="user-name" class="user-name-input" placeholder="Your Name" value="{{ profile.name }}">
+            </li>
+            <li class="title">
+                <label for="user-dob">Date of Birth</label>
+                <input type="date" name="DOB" id="user-dob" class="user-dob-input" placeholder="Date of Birth" value="{{ profile.DOB }}">
+            </li>
+            <li class="desc">
+                <label for="user-pan">PAN</label>
+                <input type="text" name="Pan" id="user-pan" class="user-pan-input" placeholder="PAN" value="{{ profile.Pan }}">
+            </li>
+            <li class="desc">
+                <label for="user-fathers-name">Father's Name</label>
+                <input type="text" name="Fathers_Name" id="user-fathers-name" class="user-fathers-name-input" placeholder="Father's Name" value="{{ profile.Fathers_Name }}">
+            </li>
+            <li class="desc">
+                <label for="user-aadhar-gender">Aadhar Gender</label>
+                <input type="text" name="aadhar_gender" id="user-aadhar-gender" class="user-aadhar-gender-input" placeholder="Aadhar Gender" value="{{ profile.aadhar_gender }}">
+            </li>
+            <li class="desc">
+                <label for="user-aadhar-number">Aadhar Number</label>
+                <input type="text" name="aadhar_number" id="user-aadhar-number" class="user-aadhar-number-input" placeholder="Aadhar Number" value="{{ profile.aadhar_number }}">
+            </li>
+            <li class="desc">
+                <label for="user-aadhar-phone">Aadhar Phone</label>
+                <input type="text" name="aadhar_Phone" id="user-aadhar-phone" class="user-aadhar-phone-input" placeholder="Aadhar Phone" value="{{ profile.aadhar_Phone }}">
+            </li>
+            <li class="desc">
+                <label for="user-aadhar-address">Aadhar Address</label>
+                <input type="text" name="aadhar_address" id="user-aadhar-address" class="user-aadhar-address-input" placeholder="Aadhar Address" value="{{ profile.aadhar_address }}">
+            </li>
+            <li class="desc">
+                <label for="user-pin">PIN</label>
+                <input type="text" name="pin" id="user-pin" class="user-pin-input" placeholder="PIN" value="{{ profile.pin }}">
+            </li>
+            <!-- Add more fields if needed -->
+        </ul>
+        <button class="profile-save-button" type="submit"> Save </button>
+    </div>
+</form>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Admin-login{% endblock title %}
+{% block content %}
+<style>
+      .btn-custom {
+            background-color: #AA336A;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #8C2255;
+        }
+
+</style>
+    <h2 class="text-center mt-5 mb-3">Rooms <span class="text-primary" >List</span></h2>
+
+    {% if user.is_superuser %}
+    <div class="text-center pb-3">
+        <a href="{% url 'add_room' %}"class="btn-custom">Add Room</a>
+    </div>
+    {% endif %}
+
+    <section class="services py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                {% for room in rooms %}
+                <div class="col-sm-12 col-md-4 col-lg-4 col-12">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Room Number: {{ room.room_number }}</h5>
+                            <p class="card-text">Available Seats: {{ room.available_seat }}</p>
+                            <p class="card-text">Type: {{ room.get_type_display }}</p>
+                            <p class="card-text">Available Date: {{ room.available_date }}</p>
+                            <p class="card-text">Floor: {{ room.floor }}</p>
+                            {% if user.is_superuser %}
+                            <form action="{% url 'delete_room' room.id %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger btn-sm me-2">Delete</button>
+                            </form>
+                            <a href="{% url 'edit_room' room.id %}" class="btn btn-primary btn-sm">Update</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col">
+                    <p>No rooms found.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock content %}

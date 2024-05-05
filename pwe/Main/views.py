@@ -47,3 +47,75 @@ def user_login(request):
 
 
 
+from django.shortcuts import render
+from .models import Leave
+
+def leave_request(request):
+    message = None
+    if request.method == 'POST':
+        # Get form data from POST request
+        user = request.user
+        contact_number = request.POST.get('contact_number')
+        reason = request.POST.get('reason')
+        room_number = request.POST.get('room_number')
+        bed_number = request.POST.get('bed_number')
+        start_date = request.POST.get('start_date')
+        end_date = request.POST.get('end_date')
+        description = request.POST.get('description')
+        due = request.POST.get('due')
+
+        # Create Leave instance
+        leave = Leave.objects.create(
+            user=user,
+            contact_number=contact_number,
+            reason=reason,
+            room_number=room_number,
+            bed_number=bed_number,
+            start_date=start_date,
+            end_date=end_date,
+            due=due
+        )
+
+        # Optionally, you can perform validation or additional processing here
+
+        message = 'Your leave application has been submitted successfully.'
+
+    return render(request, 'leave_request.html', {'message': message})  # Render the leave request form with message
+
+
+
+def admin_leave_requests(request):
+    leave_requests = Leave.objects.all()
+    return render(request, 'admin_leave_requests.html', {'leave_requests': leave_requests})
+
+
+
+
+def my_leave_requests(request):
+    # Get leave requests of the current user
+    leave_requests = Leave.objects.filter(user=request.user)
+    return render(request, 'my_leave_requests.html', {'leave_requests': leave_requests})
+
+
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Leave
+
+def update_leave_request(request, leave_id):
+    leave_request = get_object_or_404(Leave, id=leave_id)
+    if leave_request.user == request.user:
+        if request.method == 'POST':
+            leave_request.reason = request.POST.get('reason')
+            leave_request.room_number = request.POST.get('room_number')
+            leave_request.start_date = request.POST.get('start_date')
+            leave_request.end_date = request.POST.get('end_date')
+            leave_request.description = request.POST.get('description')
+            leave_request.save()
+            return redirect('my_leave_requests')
+        return render(request, 'leave_request_update.html', {'leave_request': leave_request})
+    return redirect('my_leave_requests')
+
+def delete_leave_request(request, leave_id):
+    leave_request = get_object_or_404(Leave, id=leave_id)
+    if leave_request.user == request.user:
+        leave_request.delete()
+    return redirect('my_leave_requests')
